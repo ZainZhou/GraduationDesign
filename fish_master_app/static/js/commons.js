@@ -14,7 +14,7 @@ function rnd(n,m){
 function loadImages(arr,callback){
 	for (var i = 0; i < arr.length; i++) {
 		var oImg = new Image();
-		oImg.src = 'img/'+arr[i];
+		oImg.src = '../static/img/'+arr[i];
 		~function(index){
 			oImg.onload = function(){
 				var name = arr[index].split('.')[0];

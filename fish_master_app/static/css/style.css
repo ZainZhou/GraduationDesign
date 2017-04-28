@@ -1,0 +1,51 @@
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	body {
+		background: #000;
+		text-align: center;
+	}
+	#canvas {
+		background: url("../img/game_bg.jpg") center  no-repeat;
+		background-size: 100% 100%;
+		display: none;
+	}
+	#begin_Page{
+		width: 800px;
+		height: 600px;
+		margin: 0 auto;
+		background: url("../img/begin_bg.png") center no-repeat;
+		background-size: 100% 100%;
+	}
+	#begin_Btn{
+		width: 300px;
+		height: 60px;
+		line-height: 60px;
+		font-size: 27px;
+		text-shadow: 1px 1px #333;
+		color: #fff;
+		text-align: center;
+		margin: 0 auto;
+		background: url('../img/begin_btn.png') center no-repeat;
+		background-size: 100% 100%;
+		cursor: pointer;
+	}
+	.title{
+		margin-top: 80px;
+		margin-bottom: 50px;
+	}
+	.tips{
+		text-align: left;
+		width: 55%;
+		font-size: 22px;
+		margin: 0 auto;
+		margin-bottom: 80px;
+		line-height: 30px;
+		color: #ffffff;
+		text-shadow: 1px 1px #333;
+	}
+	.tips>p{
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
