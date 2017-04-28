@@ -1,3 +1,4 @@
 from django.contrib import admin
+from fish_master_app.models import Gameuser
 
-# Register your models here.
+admin.site.register(Gameuser)

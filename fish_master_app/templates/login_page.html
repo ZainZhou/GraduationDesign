@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>捕鱼达人</title>
+    <script>
+        post_url = "{% url 'login_url' %}"
+    </script>
+    <script src={% static 'js/jquery-2.1.4.min.js' %}></script>
+    <script src={% static 'js/ajax.js' %}></script>
+</head>
+<body>
+    <input type="text" placeholder="请输入用户名" value="" id="username"><br>
+    <input type="password" placeholder="请输入密码" value="" id="password"><br>
+    <input type="button" value="登录" id="apply">
+</body>
+</html>
