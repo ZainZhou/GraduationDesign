@@ -45,9 +45,15 @@ $(function () {
         _data.password = $('#password').val();
         _data.method = 'login';
         $.post(post_url,_data,function (data) {
-            data_str = JSON.stringify(data);
-            json_data = JSON.parse(data_str);
-            console.log(json_data);
+
+            alert(data.status);
+        })
+    });
+    $('#logout').on('click',function () {
+        var _data = {};
+        _data.method = 'logout';
+        $.post(post_url,_data,function (data) {
+            alert(data.status);
         })
     })
 });
