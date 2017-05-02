@@ -47,17 +47,7 @@ $(function () {
         $.post(post_url,_data,function (data) {
             if(data.status == 200){
                 alert('登录成功！');
-            }else {
-                alert(data.info);
-            }
-        })
-    });
-    $('#logout').on('click',function () {
-        var _data = {};
-        _data.method = 'logout';
-        $.post(post_url,_data,function (data) {
-            if(data.status == 200){
-                alert('注销成功！');
+                location.href = '/game';
             }else {
                 alert(data.info);
             }

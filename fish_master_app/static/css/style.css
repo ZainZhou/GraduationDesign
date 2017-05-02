@@ -18,7 +18,7 @@
 		background: url("../img/begin_bg.png") center no-repeat;
 		background-size: 100% 100%;
 	}
-	#begin_Btn{
+	.index_Btn{
 		width: 300px;
 		height: 60px;
 		line-height: 60px;
@@ -27,6 +27,7 @@
 		color: #fff;
 		text-align: center;
 		margin: 0 auto;
+		margin-bottom: 1%;
 		background: url('../img/begin_btn.png') center no-repeat;
 		background-size: 100% 100%;
 		cursor: pointer;
@@ -40,7 +41,7 @@
 		width: 55%;
 		font-size: 22px;
 		margin: 0 auto;
-		margin-bottom: 80px;
+		margin-bottom: 1.2%;
 		line-height: 30px;
 		color: #ffffff;
 		text-shadow: 1px 1px #333;

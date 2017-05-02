@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d21a0052-3b2a-4817-a10e-3081665e19c9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fish_master_app/static/css/style.css" afterPath="$PROJECT_DIR$/fish_master_app/static/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fish_master_app/static/js/ajax.js" afterPath="$PROJECT_DIR$/fish_master_app/static/js/ajax.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fish_master_app/static/js/game/controller.js" afterPath="$PROJECT_DIR$/fish_master_app/static/js/game/controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fish_master_app/templates/index.html" afterPath="$PROJECT_DIR$/fish_master_app/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fish_master_app/templates/login_page.html" afterPath="$PROJECT_DIR$/fish_master_app/templates/login_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fish_master_app/views.py" afterPath="$PROJECT_DIR$/fish_master_app/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +33,8 @@
       <file leaf-file-name="login_page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fish_master_app/templates/login_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="22" column="54" lean-forward="false" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="54" />
+            <state relative-caret-position="352">
+              <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -42,8 +43,8 @@
       <file leaf-file-name="ajax.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="783">
-              <caret line="71" column="44" lean-forward="true" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+            <state relative-caret-position="418">
+              <caret line="54" column="7" lean-forward="false" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
               <folding>
                 <element signature="e#114#1648#0" expanded="false" />
               </folding>
@@ -51,10 +52,52 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fish_master_app/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="commons.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/game/commons.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/game/controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="59" column="54" lean-forward="false" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
+              <folding>
+                <element signature="e#666#2200#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fish_master_app/static/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="514">
+              <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fish_master_app/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="176">
               <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -99,6 +142,7 @@
     <findStrings>
       <find>con</find>
       <find>sessions</find>
+      <find>btn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,19 +155,20 @@
         <option value="$PROJECT_DIR$/fish_master_app/__init__.py" />
         <option value="$PROJECT_DIR$/fish_master/urls.py" />
         <option value="$PROJECT_DIR$/fish_master_app/static/style.css" />
-        <option value="$PROJECT_DIR$/fish_master_app/static/css/style.css" />
         <option value="$PROJECT_DIR$/fish_master_app/static/js/controller.js" />
         <option value="$PROJECT_DIR$/fish_master_app/static/js/commons.js" />
         <option value="$PROJECT_DIR$/fish_master_app/forms.py" />
         <option value="$PROJECT_DIR$/fish_master_app/admin.py" />
         <option value="$PROJECT_DIR$/fish_master_app/serializer.py" />
-        <option value="$PROJECT_DIR$/fish_master_app/templates/index.html" />
         <option value="$PROJECT_DIR$/fish_master_app/urls.py" />
         <option value="$PROJECT_DIR$/fish_master/settings.py" />
         <option value="$PROJECT_DIR$/fish_master_app/common.py" />
         <option value="$PROJECT_DIR$/fish_master_app/models.py" />
-        <option value="$PROJECT_DIR$/fish_master_app/templates/login_page.html" />
         <option value="$PROJECT_DIR$/fish_master_app/views.py" />
+        <option value="$PROJECT_DIR$/fish_master_app/static/css/style.css" />
+        <option value="$PROJECT_DIR$/fish_master_app/templates/index.html" />
+        <option value="$PROJECT_DIR$/fish_master_app/static/js/game/controller.js" />
+        <option value="$PROJECT_DIR$/fish_master_app/templates/login_page.html" />
         <option value="$PROJECT_DIR$/fish_master_app/static/js/ajax.js" />
       </list>
     </option>
@@ -236,6 +281,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fish_master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fish_master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fish_master_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fish_master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fish_master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fish_master_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -603,14 +696,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/commons.js" />
-    <entry file="file://$PROJECT_DIR$/fish_master_app/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/CreateFish.js" />
     <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/CreateCoin.js" />
     <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/CreateCannon.js" />
@@ -631,14 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fish_master_app/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="12" column="35" lean-forward="false" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fish_master_app/serializer.py" />
     <entry file="file://$PROJECT_DIR$/fish_master_app/forms.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -652,16 +729,6 @@
         <state relative-caret-position="1012">
           <caret line="46" column="47" lean-forward="false" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fish_master_app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -684,18 +751,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fish_master_app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fish_master_app/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/game/commons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fish_master_app/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/game/controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="59" column="54" lean-forward="false" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
+          <folding>
+            <element signature="e#666#2200#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fish_master_app/templates/login_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="54" lean-forward="false" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="54" />
+        <state relative-caret-position="352">
+          <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fish_master_app/static/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="71" column="44" lean-forward="true" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+        <state relative-caret-position="418">
+          <caret line="54" column="7" lean-forward="false" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
           <folding>
             <element signature="e#114#1648#0" expanded="false" />
           </folding>

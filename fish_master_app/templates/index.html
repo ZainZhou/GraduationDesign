@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <title>捕鱼达人</title>
     <link rel="stylesheet" href={% static 'css/style.css' %}>
+    <script>
+        post_url = "{% url 'login_url' %}"
+    </script>
     <script src={% static 'js/game/commons.js' %}></script>
     <script src={% static 'js/game/CreateFish.js' %}></script>
     <script src={% static 'js/game/CreateBullet.js' %}></script>
     <script src={% static 'js/game/CreateCannon.js' %}></script>
     <script src={% static 'js/game/CreateCoin.js' %}></script>
     <script src={% static 'js/game/controller.js' %}></script>
+    <script src={% static 'js/jquery-2.1.4.min.js' %}></script>
 </head>
 <body>
 <input type="hidden" class="music_num" value="{% static 'music/2.wav' %}">
@@ -22,8 +26,11 @@
 			<p>游戏指南:</p>
 			点击屏幕发射炮弹,左键退化炮台,右键强化炮台,上键加金币,越强的炮台所消耗的金币越多.
 		</div>
-		<div id="begin_Btn">
+		<div id="begin_Btn" class="index_Btn">
 			开&nbsp;&nbsp;始&nbsp;&nbsp;游&nbsp;&nbsp;戏
+		</div>
+        <div id="logout_btn" class="index_Btn">
+			注销
 		</div>
 	</div>
 	<canvas id="canvas" width="800" height="600">
