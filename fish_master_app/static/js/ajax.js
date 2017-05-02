@@ -45,15 +45,37 @@ $(function () {
         _data.password = $('#password').val();
         _data.method = 'login';
         $.post(post_url,_data,function (data) {
-
-            alert(data.status);
+            if(data.status == 200){
+                alert('登录成功！');
+            }else {
+                alert(data.info);
+            }
         })
     });
     $('#logout').on('click',function () {
         var _data = {};
         _data.method = 'logout';
         $.post(post_url,_data,function (data) {
-            alert(data.status);
+            if(data.status == 200){
+                alert('注销成功！');
+            }else {
+                alert(data.info);
+            }
+        })
+    });
+    $('#register').on('click',function () {
+        var _data = {};
+        _data.method = 'reg';
+        _data.username = $('#reg_user').val();
+        _data.password = $('#reg_password').val();
+        _data.age = $('#reg_age').val();
+        _data.email = $('#reg_email').val();
+        $.post(post_url,_data,function (data) {
+            if(data.status == 200){
+                alert('注册成功！');
+            }else {
+                alert(data.info);
+            }
         })
     })
 });

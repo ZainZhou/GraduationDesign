@@ -15,12 +15,11 @@ def loginPage(request):
     return render(request,'login_page.html')
 
 def UserAction(request):
+    _data = {}
     if request.POST.get('method') == 'login':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username+','+password)
         if request.session.get('logineduser',False):
-            _data = {}
             _data['status'] = 403
             _data['info'] = '已登录'
             _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
@@ -28,7 +27,6 @@ def UserAction(request):
         try:
             user = Gameuser.objects.get(username=username)
             if user.password == password:
-                _data = {}
                 _data['status'] = 200
                 _data['info'] = '登录成功'
                 _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
@@ -36,13 +34,11 @@ def UserAction(request):
                 request.session.set_expiry(0)
                 return HttpResponse(_data,status=status.HTTP_200_OK,content_type="application/json")
             else:
-                _data = {}
                 _data['status'] = 403
                 _data['info'] = '用户名或密码错误'
                 _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
                 return HttpResponse(_data,content_type="application/json")
         except Exception as e:
-            _data = {}
             _data['status'] = 403
             _data['info'] = str(e)
             _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
@@ -50,7 +46,6 @@ def UserAction(request):
     elif request.POST.get('method') == 'logout':
         try:
            del request.session['logineduser']
-           _data = {}
            _data['status'] = 200
            _data['info'] = '注销成功'
            _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
@@ -61,7 +56,6 @@ def UserAction(request):
         try:
             username = request.POST.get('username')
             s = Gameuser.objects.get(username=username)
-            _data = {}
             _data['status'] = 200
             _data['info'] = '该用户已被注册'
             _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
@@ -71,12 +65,18 @@ def UserAction(request):
             obj.username = request.POST.get('username')
             obj.password = request.POST.get('password')
             obj.email = request.POST.get('email')
-            obj.save()
-            _data = {}
-            _data['status'] = 200
-            _data['info'] = '注册成功'
-            _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
-            return HttpResponse(_data,content_type="application/json")
+            obj.age = request.POST.get('age')
+            try:
+                obj.save()
+                _data['status'] = 200
+                _data['info'] = '注册成功'
+                _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
+                return HttpResponse(_data,content_type="application/json")
+            except Exception as e:
+                _data['status'] = 500
+                _data['info'] = str(e)
+                _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
+                return HttpResponse(_data, content_type="application/json")
     else:
         _data = {}
         _data['status'] = 500
