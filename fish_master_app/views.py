@@ -2,17 +2,34 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.hashers import make_password, check_password
-from .models import Gameuser
+from .models import Gameuser,GameHistory
 from rest_framework import status
 import json
 # Create your views here.
 def gamePage(request):
-    return render(request, 'index.html')
-
-def loginPage(request):
     if request.session.get('logineduser',False):
-        return render(request, 'index.html')
-    return render(request,'login_page.html')
+
+        return render(request,'index.html',{'logined_user':request.session.get('logineduser')})
+
+    return render(request, 'index.html')
+def postScore(request):
+    score = int(request.POST.get('score'))
+    try:
+        user = Gameuser.objects.get(username=request.session.get('logineduser'))
+        oH = GameHistory.objects.get(username=user)
+        if oH.score <= score:
+            oH.score = score
+            oH.save()
+        _data = {}
+        _data['status'] = 200
+        _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
+        return HttpResponse(_data,content_type="application/json")
+    except Exception as e:
+        _data = {}
+        _data['status'] = 403
+        _data['info'] = str(e)
+        _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
+        return HttpResponse(_data, content_type="application/json")
 
 def UserAction(request):
     _data = {}
@@ -23,7 +40,7 @@ def UserAction(request):
             _data['status'] = 403
             _data['info'] = '已登录'
             _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
-            return HttpResponse(_data)
+            return HttpResponse(_data,content_type="application/json")
         try:
             user = Gameuser.objects.get(username=username)
             if user.password == password:
@@ -40,7 +57,7 @@ def UserAction(request):
                 return HttpResponse(_data,content_type="application/json")
         except Exception as e:
             _data['status'] = 403
-            _data['info'] = str(e)
+            _data['info'] = '用户名或密码错误'
             _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
             return HttpResponse(_data,content_type="application/json")
     elif request.POST.get('method') == 'logout':
@@ -68,6 +85,7 @@ def UserAction(request):
             obj.age = request.POST.get('age')
             try:
                 obj.save()
+                oH = GameHistory.objects.create(username=obj,score=0)
                 _data['status'] = 200
                 _data['info'] = '注册成功'
                 _data = json.dumps(_data, ensure_ascii=False).encode('utf8')

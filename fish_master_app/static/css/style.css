@@ -1,6 +1,7 @@
 	*{
 		padding: 0;
 		margin: 0;
+		font-family: "Microsoft Sans Serif";
 	}
 	body {
 		background: #000;
@@ -12,16 +13,14 @@
 		display: none;
 	}
 	#begin_Page{
-		width: 800px;
-		height: 600px;
 		margin: 0 auto;
 		background: url("../img/begin_bg.png") center no-repeat;
 		background-size: 100% 100%;
+		overflow: hidden;
 	}
 	.index_Btn{
-		width: 300px;
-		height: 60px;
-		line-height: 60px;
+		width: 75%;
+		line-height: 2.8em;
 		font-size: 27px;
 		text-shadow: 1px 1px #333;
 		color: #fff;
@@ -32,9 +31,46 @@
 		background-size: 100% 100%;
 		cursor: pointer;
 	}
+	.login_block{
+		width: 38%;
+		margin: 0 auto;
+		display: none;
+	}
+	.logined_block{
+		display: none;
+		width: 38%;
+		margin: 0 auto;
+	}
+	.login_block p span{
+		float: left;
+		display: inline-block;
+		font-size: 30px;
+		text-shadow: 1px 1px 1px #333;
+		color: #ffffff;
+	}
+	.login_block p {
+		overflow: hidden;
+		height: auto;
+		margin-bottom: 10px;
+		line-height: 58px;
+	}
+	.login_block input{
+		width: 65%;
+		float: right;
+		padding: 3%;
+		font-size: 26px;
+		border-radius: 5px;
+		border: none !important;
+		background: #ffffff;
+	}
+	.login_block input:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;//关于解决输入框背景颜色
+        -webkit-text-fill-color: rgba(255,255,255,1)!important;//关于接输入框文字颜色
+	}
 	.title{
-		margin-top: 80px;
-		margin-bottom: 50px;
+		display: block;
+		width: 50%;
+		margin: 6% auto;
 	}
 	.tips{
 		text-align: left;

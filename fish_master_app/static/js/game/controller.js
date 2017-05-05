@@ -12,6 +12,20 @@ window.onload = function(){
             var Ppplayer = document.getElementById('PPplayer');
             var Musics = [];
             var Music_input = document.getElementsByClassName('music_num');
+            var is_logined = $('.is_logined');
+            var screen_w = $(window).height()*4/3;
+            var screen_y = $(window).height();
+            var score = 0;
+            var over_flag = true;
+            if(is_logined.length){
+                $('.logined_block').css('display','block');
+            }else {
+                $('.login_block').css('display','block');
+                l = $('.lineP');
+                x = l.css('height');
+                l.css('line-height',x);
+                $('#canvas').css({'height':$(window).height(),'width':$(window).height()*4/3});
+            }
             $(document).ajaxSend(function(event, xhr, settings) {
     function getCookie(name) {
         var cookieValue = null;
@@ -51,13 +65,31 @@ window.onload = function(){
             for(var i = 0 ; i < Music_input.length ; i++){
                 Musics.push(Music_input[i].value);
             }
+            $('#login_btn').on('click',function () {
+               var _data = {};
+               _data.method = 'login';
+               _data.username = $('#username').val();
+               _data.password = $('#password').val();
+               $.post(post_url,_data,function (data) {
+                    if(data.status == 200){
+                        $('.login_block').css('display','none');
+                        $('.logined_block').css('display','block');
+                    }else {
+                        alert(data.info);
+                    }
+                })
+            });
             $('#logout_btn').on('click',function () {
                 var _data = {};
                 _data.method = 'logout';
                 $.post(post_url,_data,function (data) {
                     if(data.status == 200){
-                        alert('注销成功！');
-                        location.href = '/login_page';
+                        $('.logined_block').css('display','none');
+                        $('.login_block').css('display','block');
+                        l = $('.lineP');
+                        x = l.css('height');
+                        l.css('line-height',x);
+                        $('#canvas').css({'height':$(window).height(),'width':$(window).height()*4/3});
                     }else {
                         alert(data.info);
                     }
@@ -70,8 +102,8 @@ window.onload = function(){
                 loadImages(imgs,function(){
                     /*炮台*/
                     var c = new Cannon(1);
-                    c.x = 431;
-                    c.y = 570;
+                    c.x = screen_w*0.53875;
+                    c.y = screen_y*0.93;
                     /*换炮加钱*/
                     document.onkeydown = function(event){
                         var e = event || window.event || arguments.callee.caller.arguments[0];
@@ -79,8 +111,6 @@ window.onload = function(){
                             c.type+=1;
                         }else if(e.keyCode == 37 && c.type > 1){
                             c.type-=1;
-                        }else if(e.keyCode == 38 && score < 999900){
-                            score+=100;
                         }
                         if(c.type > 2 && c.type <= 5){
                             Ppplayer.src = Musics[0];
@@ -112,7 +142,6 @@ window.onload = function(){
                                 f.rotate = rnd(-60,60);
                             }else{
                                 f.x = dir[0];
-                                f.y = rnd(100,oC.height-100);
                                 f.rotate = rnd(135,250);
                             }
                             aFish.push(f);
@@ -125,30 +154,45 @@ window.onload = function(){
                                 aFish.splice(i,1);
                                 i--;
                             }
-                        };
-
+                        }
+                        /*银币越界*/
+                        for (var i = 0; i < aCoin.length; i++) {
+                            if(aCoin[i].x <= 5){
+                                aCoin[i].close();
+                                aCoin.splice(i,1);
+                                i--;
+                            }
+                        }
+                        /*炮弹越界*/
+                        for (var i = 0; i < aBullet.length; i++) {
+                            if(aBullet[i].x<-out || aBullet[i].x>oC.width+out || aBullet[i].y<-out || aBullet[i].y>oC.height+out){
+                                aBullet[i].close();
+                                    aBullet.splice(i,1);
+                                    i--;
+                            }
+                        }
                         /*画鱼*/
                         for (var i = 0; i < aFish.length; i++) {
                             aFish[i].draw(gd);
-                        };
+                        }
 
                         /*画子弹*/
                         for (var i = 0; i < aBullet.length; i++) {
                             aBullet[i].draw(gd);
-                        };
+                        }
                         /*画下部背景*/
-                        gd.drawImage(json.bottom,0,0,765,70,5,532,765,70);
+                        gd.drawImage(json.bottom,0,0,765,70,0,screen_y-screen_w*0.091,screen_w*0.97,screen_w*0.091);
                         /*画炮台*/
                         c.draw(gd);
                         /*显示得分*/
-                        var str = score.toString();
+                        var str = _score.toString();
                         var d = 6 - str.length;
                         var arr = str.split("");
                         for(var i = 0,len = d; i<len; i++){
                             arr.unshift(0);
                         }
                         for(var i = 0,len = 6; i<len; i++){
-                            gd.drawImage(json.coinText,parseInt(arr[i])*36,0,36,49,28+i*23,582,10,13.24);
+                            gd.drawImage(json.coinText,parseInt(arr[i])*36,0,36,49,screen_w*0.03+i*screen_w*0.029,screen_y-screen_w*0.0265,screen_w*0.0125,screen_y*0.022);
                         }
                         /*碰撞检测*/
                         for (var i = 0; i < aFish.length; i++) {
@@ -159,14 +203,10 @@ window.onload = function(){
                                         var y = aFish[i].y;
                                         /*鱼消失*/
                                         score += 150*aFish[i].type;
-                                        if(score > 999999){
-                                            alert("恭喜您成为捕鱼宗师,游戏结束!");
-                                            window.location.reload();
-                                        }
                                         aFish[i].close();
                                         aFish.splice(i,1);
                                         i--;
-                                        var cion = new Coin();
+                                        var cion = new Coin(screen_y+60);
                                         cion.x=x;
                                         cion.y=y;
                                         aCoin.push(cion);
@@ -183,10 +223,24 @@ window.onload = function(){
                         for (var i = 0; i < aCoin.length; i++) {
                             aCoin[i].draw(gd);
                         }
+                        console.log(_score +','+ aBullet.length +','+ over_flag);
+                        if(_score == 0 && aBullet.length == 0 && over_flag){
+                            over_flag = false;
+                            alert("游戏结束！得分："+score);
+                            var _data = {};
+                            _data.score = score;
+                            $.post(score_url,_data,function (data) {
+                                if(data.status == 200){
+                                    location.reload();
+                                }else {
+                                    alert(data.info);
+                                    location.reload()
+                                }
+                            })
+                        }
                     },16);
-
                     oC.onclick = function(ev){
-                        if(clickDisable){
+                        if(clickDisable || !over_flag){
                             return 0 ;
                         }
                         clickDisable = 1;
@@ -195,11 +249,11 @@ window.onload = function(){
                         setTimeout(function(){
                             clickDisable = 0;
                         },300);
-                        if(score - c.type*100 > 0){
-                            score -= c.type*100;
-                        }else {
-                            alert("没钱了!快充值!");
-                            return;
+                        if(_score - c.type*100 >= 0){
+                            _score -= c.type*100;
+                        }else if(_score >= 100){
+                            alert("金币不足！");
+                            return false;
                         }
                         var oEvent = ev || event;
                         var a = c.x-(oEvent.clientX-oC.offsetLeft);
@@ -215,4 +269,4 @@ window.onload = function(){
                     };
                 });
             }
-        }
+        };

@@ -11,3 +11,13 @@ class Gameuser(models.Model):
         ordering = ['-id']
     def __str__(self):
         return self.username
+
+class GameHistory(models.Model):
+    username = models.OneToOneField(Gameuser)
+    score = models.IntegerField("得分",default=0)
+    class Meta:
+        verbose_name = "游戏得分"
+        verbose_name_plural = verbose_name
+        ordering = ['score']
+    def __str__(self):
+        return self.score

@@ -13,7 +13,7 @@ function Fish(type){
 	this.animation();
 	this.cur = 0;
 	this.rotate = 0;
-	this.speed = 1;
+	this.speed = 4/type;
 	this.timer1 = null;
 	this.timer2 = null;
 	this.collR=FISH_SIZE[this.type].collR;

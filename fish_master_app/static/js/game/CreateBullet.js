@@ -39,4 +39,4 @@ Bullet.prototype.animation = function(){
 
 Bullet.prototype.close=function(){
 	clearInterval(this.timer1);
-}
+};
