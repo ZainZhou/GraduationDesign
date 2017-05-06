@@ -31,15 +31,10 @@
 		background-size: 100% 100%;
 		cursor: pointer;
 	}
-	.login_block{
+	.block{
 		width: 38%;
 		margin: 0 auto;
 		display: none;
-	}
-	.logined_block{
-		display: none;
-		width: 38%;
-		margin: 0 auto;
 	}
 	.login_block p span{
 		float: left;
@@ -48,7 +43,20 @@
 		text-shadow: 1px 1px 1px #333;
 		color: #ffffff;
 	}
+	.reg_block p span{
+		float: left;
+		display: inline-block;
+		font-size: 30px;
+		text-shadow: 1px 1px 1px #333;
+		color: #ffffff;
+	}
 	.login_block p {
+		overflow: hidden;
+		height: auto;
+		margin-bottom: 10px;
+		line-height: 58px;
+	}
+	.reg_block p {
 		overflow: hidden;
 		height: auto;
 		margin-bottom: 10px;
@@ -63,7 +71,23 @@
 		border: none !important;
 		background: #ffffff;
 	}
+	.reg_block input{
+		width: 65%;
+		float: right;
+		padding: 3%;
+		font-size: 26px;
+		border-radius: 5px;
+		border: none !important;
+		background: #ffffff;
+	}
+	.reg_block input{
+		font-size: 20px;
+	}
 	.login_block input:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;//关于解决输入框背景颜色
+        -webkit-text-fill-color: rgba(255,255,255,1)!important;//关于接输入框文字颜色
+	}
+	.reg_block input:-webkit-autofill {
 		-webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;//关于解决输入框背景颜色
         -webkit-text-fill-color: rgba(255,255,255,1)!important;//关于接输入框文字颜色
 	}

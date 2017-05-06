@@ -5,7 +5,6 @@ from django.contrib.auth.hashers import make_password, check_password
 from .models import Gameuser,GameHistory
 from rest_framework import status
 import json
-# Create your views here.
 def gamePage(request):
     if request.session.get('logineduser',False):
 
@@ -73,7 +72,7 @@ def UserAction(request):
         try:
             username = request.POST.get('username')
             s = Gameuser.objects.get(username=username)
-            _data['status'] = 200
+            _data['status'] = 403
             _data['info'] = '该用户已被注册'
             _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
             return HttpResponse(_data,content_type="application/json")
@@ -81,6 +80,7 @@ def UserAction(request):
             obj = Gameuser()
             obj.username = request.POST.get('username')
             obj.password = request.POST.get('password')
+            obj.nickname = request.POST.get('nickname')
             obj.email = request.POST.get('email')
             obj.age = request.POST.get('age')
             try:

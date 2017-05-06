@@ -27,7 +27,7 @@
     {% endif %}
 	<div id="begin_Page">
 		<img src={% static 'img/title.png' %} alt="" class="title">
-        <div class="login_block">
+        <div class="login_block block" style="display: none;">
             <p class="lineP">
                 <span>用户名：</span>
                 <input type="text" id="username" placeholder="请输入用户名">
@@ -39,11 +39,11 @@
             <div id="login_btn" class="index_Btn" style="margin-bottom: 5%">
 			    登录
 		    </div>
-            <div id="reg_btn" class="index_Btn">
+            <div id="goreg_btn" class="index_Btn">
 			    注册
 		    </div>
         </div>
-        <div class="logined_block">
+        <div class="logined_block block">
             <div id="rank_btn" class="index_Btn">
 			    游戏榜单
 		    </div>
@@ -52,6 +52,31 @@
 		    </div>
             <div id="logout_btn" class="index_Btn">
 			    注销
+		    </div>
+        </div>
+        <div class="reg_block block">
+            <p class="lineP">
+                <span>用户名：</span>
+                <input type="text" id="reg_username" placeholder="请输入6-12位字母或数字" onKeyUp="value=value.replace(/[\W]/g,'')" maxlength=12 minlength="6">
+            </p>
+            <p class="lineP">
+                <span>密码：</span>
+                <input type="password" onKeyUp="value=value.replace(/[\W]/g,'')" id="reg_password" placeholder="请输入8-14位数字或字母" maxlength=14 minlength=8><br>
+            </p>
+            <p class="lineP">
+                <span>昵称：</span>
+                <input type="text" id="reg_nickname"  maxlength=6 onkeyup="value=value.replace(/[^\w\u4E00-\u9FA5]/g, '')"   placeholder="请输入6位以下昵称"><br>
+            </p>
+            <p class="lineP">
+                <span>邮箱：</span>
+                <input type="text" id="reg_email" placeholder="请输入正确的邮箱"><br>
+            </p>
+            <p style="margin-bottom: 10%" class="lineP">
+                <span>年龄：</span>
+                <input type="text" id="reg_age" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="请输入正确的年龄" maxlength=3><br>
+            </p>
+            <div id="reg_btn" class="index_Btn">
+			    提交
 		    </div>
         </div>
 	</div>

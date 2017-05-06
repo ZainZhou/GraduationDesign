@@ -26,6 +26,7 @@ window.onload = function(){
                 l.css('line-height',x);
                 $('#canvas').css({'height':$(window).height(),'width':$(window).height()*4/3});
             }
+
             $(document).ajaxSend(function(event, xhr, settings) {
     function getCookie(name) {
         var cookieValue = null;
@@ -65,6 +66,38 @@ window.onload = function(){
             for(var i = 0 ; i < Music_input.length ; i++){
                 Musics.push(Music_input[i].value);
             }
+            $('#reg_btn').on('click',function () {
+               var _data = {};
+               var username = $('#reg_username').val();
+               var password = $('#reg_password').val();
+               var nickname = $('#reg_nickname').val();
+               var email = $('#reg_email').val();
+               var age = $('#reg_age').val();
+               if(username.length>6 && username.length<12 && password.length>8 && password.length<14 && nickname.length>0  && nickname.length<6 && email && age){
+                    _data.username = username;
+                    _data.password = password;
+                    _data.nickname = nickname;
+                    _data.email = email;
+                    _data.age = age;
+                    _data.method = 'reg';
+                    $.post(post_url,_data,function (data) {
+                        if(data.status == 200){
+                            alert("注册成功！");
+                            $('.login_block').css('display','block');
+                            $('.reg_block').css('display','none');
+                        }else {
+                            alert(data.info);
+                        }
+                    })
+               }else {
+                   alert("请将注册信息填写完整！");
+                   return false;
+               }
+            });
+            $('#goreg_btn').on('click',function () {
+                $('.login_block').css('display','none');
+                $('.reg_block').css('display','block');
+            });
             $('#login_btn').on('click',function () {
                var _data = {};
                _data.method = 'login';
