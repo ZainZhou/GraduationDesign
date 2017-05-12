@@ -17,6 +17,7 @@
 		background: url("../img/begin_bg.png") center no-repeat;
 		background-size: 100% 100%;
 		overflow: hidden;
+		position: relative;
 	}
 	.index_Btn{
 		width: 75%;
@@ -32,7 +33,7 @@
 		cursor: pointer;
 	}
 	.block{
-		width: 38%;
+		width: 40%;
 		margin: 0 auto;
 		display: none;
 	}
@@ -42,6 +43,77 @@
 		font-size: 30px;
 		text-shadow: 1px 1px 1px #333;
 		color: #ffffff;
+	}
+	.changePd{
+		position: absolute;
+		width: 40%;
+		border-radius: 6px;
+		left: 30%;
+		top:35%;
+		background: #ffffff;
+		border: 4px solid #fa9e00;
+		font-size: 20px;
+		display: none;
+	}
+	.changePd p{
+		width: 62%;
+		display: inline-block;
+		margin: 0 auto;
+		margin-top: 5.5%;
+		overflow: hidden;
+	}
+	.btnBox input{
+		float: none !important;
+		background: #fa9e00;
+		color: #ffffff;
+		width: 30%;
+		margin-top: 4%;
+	}
+	.changePd span{
+		float: left;
+	}
+	.changePd input{
+		float: right;
+		padding: 5px;
+		border: none;
+		border-radius: 3px;
+		font-size: 18px;
+		box-shadow: inset 1px 1px 5px #ccc;
+	}
+	.rank_list{
+		position: absolute;
+		width: 70%;
+		top:10%;
+		list-style: none;
+		background: #fa9e00;
+		left: 15%;
+		color: #ffffff;
+		font-size: 20px;
+		border-radius: 5px;
+		display: none;
+	}
+	.rank_title{
+		width: 50%;
+		display: block;
+		margin: 10px auto;
+	}
+	.close_btn{
+		float: right;
+		font-size: 50px;
+		margin-left: -50px;
+		margin-top: -10px;
+		cursor: pointer;
+	}
+	.rank_list li{
+		border-radius: 5px;
+		line-height: 50px;
+		overflow: hidden;
+	}
+	.rank_list li span{
+		display: inline-block;
+		width: 33%;
+		float: left;
+		text-align: center;
 	}
 	.reg_block p span{
 		float: left;

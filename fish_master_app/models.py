@@ -5,7 +5,7 @@ class Gameuser(models.Model):
     password = models.CharField(max_length= 16)
     email = models.EmailField(default="xxx@xx.com")
     age = models.IntegerField(default=18)
-    nickname = models.CharField(max_length=6,default="sb")
+    nickname = models.CharField(max_length=6,default="sb",unique=True)
     class Meta:
         verbose_name = "用户名"
         verbose_name_plural = verbose_name
@@ -19,6 +19,4 @@ class GameHistory(models.Model):
     class Meta:
         verbose_name = "游戏得分"
         verbose_name_plural = verbose_name
-        ordering = ['score']
-    def __str__(self):
-        return self.score
+        ordering = ['-score']

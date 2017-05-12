@@ -26,7 +26,7 @@ window.onload = function(){
                 l.css('line-height',x);
                 $('#canvas').css({'height':$(window).height(),'width':$(window).height()*4/3});
             }
-
+            //Django Ajax
             $(document).ajaxSend(function(event, xhr, settings) {
     function getCookie(name) {
         var cookieValue = null;
@@ -63,17 +63,23 @@ window.onload = function(){
         xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
     }
 });
+
             for(var i = 0 ; i < Music_input.length ; i++){
                 Musics.push(Music_input[i].value);
             }
+            $('#return_btn').on('click',function () {
+                $('.login_block').css('display','block');
+                $('.reg_block').css('display','none');
+            });
             $('#reg_btn').on('click',function () {
                var _data = {};
                var username = $('#reg_username').val();
                var password = $('#reg_password').val();
+               var repassword = $('#reg_repassword').val();
                var nickname = $('#reg_nickname').val();
                var email = $('#reg_email').val();
                var age = $('#reg_age').val();
-               if(username.length>6 && username.length<12 && password.length>8 && password.length<14 && nickname.length>0  && nickname.length<6 && email && age){
+               if(username.length>=6 && username.length<12 && password.length>8 && password.length<14 && repassword == password && nickname.length>0  && nickname.length<6 && email && age){
                     _data.username = username;
                     _data.password = password;
                     _data.nickname = nickname;
@@ -90,7 +96,7 @@ window.onload = function(){
                         }
                     })
                }else {
-                   alert("请将注册信息填写完整！");
+                   alert("请正确填写注册信息！");
                    return false;
                }
             });
@@ -127,6 +133,37 @@ window.onload = function(){
                         alert(data.info);
                     }
                 })
+            });
+            $('.ApplyNewPd').on('click',function () {
+               var oldPd = $("#OldPassword").val();
+               var newPd = $("#NewPassword").val();
+               var conPd = $("#ConfirmPassword").val();
+               if(newPd != conPd){
+                   alert("新密码不一致！");
+                   return false
+               }
+               var _data = {};
+               _data.oldPd = oldPd;
+               _data.newPd = newPd;
+               _data.method = "changePd";
+               $.post(post_url,_data,function (data) {
+                   alert(data.info);
+                   if (data.status == 200){
+                        $('.changePd').css('display','none');
+                   }
+               })
+            });
+            $('.CancelApply').on('click',function () {
+               $('.changePd').css('display','none');
+            });
+            $('#changePd_btn').on('click',function () {
+                $('.changePd').css('display','block');
+            });
+            $('.close_btn').on('click',function () {
+               $('.rank_list').css('display','none');
+            });
+            $('#rank_btn').on('click',function () {
+                $('.rank_list').css('display','block');
             });
             beginGame.onclick = function(){
                 beginPage.style.display = "none";

@@ -6,7 +6,7 @@
     <title>捕鱼达人</title>
     <link rel="stylesheet" href={% static 'css/style.css' %}>
     <script>
-        post_url = "{% url 'login_url' %}";
+        post_url = "{% url 'useraction' %}";
         score_url = "{% url 'score_url' %}";
     </script>
     <script src={% static 'js/jquery-2.1.4.min.js' %}></script>
@@ -44,11 +44,59 @@
 		    </div>
         </div>
         <div class="logined_block block">
+            <div class="changePd">
+                <p>
+                    <span>原密码：</span><input type="password" placeholder="请输入原密码" id="OldPassword">
+                </p>
+                <p>
+                    <span>新密码：</span><input type="password" placeholder="请输入新密码" id="NewPassword">
+                </p>
+                <p>
+                    <span>确认密码：</span><input type="password" placeholder="请确认新密码" id="ConfirmPassword">
+                </p>
+                <div class="btnBox">
+                    <input type="button" class="ApplyNewPd" value="提交">
+                    <input type="button" class="CancelApply" value="取消">
+                </div>
+            </div>
+            <ul class="rank_list">
+                <div class="close_btn">
+                    ✘
+                </div>
+                <img src="{% static 'img/rank_title.png' %}" class="rank_title">
+                <li>
+                    <span class="rank">
+                        排名
+                    </span>
+                    <span class="nickname">
+                        昵称
+                    </span>
+                    <span class="score">
+                        游戏得分
+                    </span>
+                </li>
+                {% for obj in rank_list %}
+                    <li>
+                        <span class="rank">
+                            {{ obj.rank }}
+                        </span>
+                        <span class="nickname">
+                            {{ obj.nickname }}
+                        </span>
+                        <span class="score">
+                            {{ obj.score }}
+                        </span>
+                </li>
+                {% endfor %}
+            </ul>
             <div id="rank_btn" class="index_Btn">
 			    游戏榜单
 		    </div>
 		    <div id="begin_Btn" class="index_Btn">
 			    开&nbsp;&nbsp;始&nbsp;&nbsp;游&nbsp;&nbsp;戏
+		    </div>
+            <div id="changePd_btn" class="index_Btn">
+			    修改密码
 		    </div>
             <div id="logout_btn" class="index_Btn">
 			    注销
@@ -64,8 +112,12 @@
                 <input type="password" onKeyUp="value=value.replace(/[\W]/g,'')" id="reg_password" placeholder="请输入8-14位数字或字母" maxlength=14 minlength=8><br>
             </p>
             <p class="lineP">
+                <span>确认密码：</span>
+                <input type="password" onKeyUp="value=value.replace(/[\W]/g,'')" id="reg_repassword" placeholder="请输入8-14位数字或字母" maxlength=14 minlength=8><br>
+            </p>
+            <p class="lineP">
                 <span>昵称：</span>
-                <input type="text" id="reg_nickname"  maxlength=6 onkeyup="value=value.replace(/[^\w\u4E00-\u9FA5]/g, '')"   placeholder="请输入6位以下昵称"><br>
+                <input type="text" id="reg_nickname"  maxlength=6  placeholder="请输入6位以下昵称"><br>
             </p>
             <p class="lineP">
                 <span>邮箱：</span>
@@ -77,6 +129,9 @@
             </p>
             <div id="reg_btn" class="index_Btn">
 			    提交
+		    </div>
+            <div id="return_btn" class="index_Btn">
+			    返回
 		    </div>
         </div>
 	</div>
