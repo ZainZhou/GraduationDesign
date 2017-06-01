@@ -59,12 +59,12 @@ def UserAction(request):
                 return HttpResponse(_data,status=status.HTTP_200_OK,content_type="application/json")
             else:
                 _data['status'] = 403
-                _data['info'] = '用户名或密码错误'
+                _data['info'] = '密码错误'
                 _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
                 return HttpResponse(_data,content_type="application/json")
         except Exception as e:
             _data['status'] = 403
-            _data['info'] = '用户名或密码错误'
+            _data['info'] = '用户名不存在'
             _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
             return HttpResponse(_data,content_type="application/json")
     elif request.POST.get('method') == 'logout':

@@ -7,7 +7,7 @@ class Gameuser(models.Model):
     age = models.IntegerField(default=18)
     nickname = models.CharField(max_length=6,default="sb",unique=True)
     class Meta:
-        verbose_name = "用户名"
+        verbose_name = "玩家"
         verbose_name_plural = verbose_name
         ordering = ['-id']
     def __str__(self):

@@ -19,6 +19,27 @@
 		overflow: hidden;
 		position: relative;
 	}
+	.TipsHolder{
+		position: absolute;
+		width: 20%;
+		left: 40%;
+		top:30%;
+		background: #ffffff;
+		border-radius: 5px;
+		z-index: 1000;
+		display: none;
+	}
+	.TipsHolder .error_tips{
+		font-size: 25px;
+		text-align: center;
+		color: #333333;
+		text-shadow: 1px 1px 1px #2d445e;
+	}
+	.TipsHolder .closeTip{
+		cursor: pointer;
+		float: right;
+		font-size: 25px;
+	}
 	.index_Btn{
 		width: 75%;
 		line-height: 2.8em;

@@ -17,6 +17,8 @@ window.onload = function(){
             var screen_y = $(window).height();
             var score = 0;
             var over_flag = true;
+            var info_alarm = $('.TipsHolder');
+            var info_alarm_text = info_alarm.find('.error_tips');
             if(is_logined.length){
                 $('.logined_block').css('display','block');
             }else {
@@ -73,31 +75,72 @@ window.onload = function(){
             });
             $('#reg_btn').on('click',function () {
                var _data = {};
-               var username = $('#reg_username').val();
-               var password = $('#reg_password').val();
-               var repassword = $('#reg_repassword').val();
-               var nickname = $('#reg_nickname').val();
-               var email = $('#reg_email').val();
-               var age = $('#reg_age').val();
-               if(username.length>=6 && username.length<12 && password.length>8 && password.length<14 && repassword == password && nickname.length>0  && nickname.length<6 && email && age){
-                    _data.username = username;
-                    _data.password = password;
-                    _data.nickname = nickname;
-                    _data.email = email;
-                    _data.age = age;
-                    _data.method = 'reg';
-                    $.post(post_url,_data,function (data) {
+               var error = null;
+               _data.username = $('#reg_username').val();
+               _data.password = $('#reg_password').val();
+               _data.repassword = $('#reg_repassword').val();
+               _data.nickname = $('#reg_nickname').val();
+               _data.email = $('#reg_email').val();
+               _data.age = $('#reg_age').val()
+                _data.method = 'reg';
+               for (v in _data) {
+                    switch (v){
+                        case 'username':
+                            if(_data.username.length < 6 || _data.username.length > 12){
+                                error = '请正确填写用户名！';
+                            }
+                            break;
+                        case 'password':
+                            if (_data.password.length < 8 || _data.password.length > 14){
+                                error = '请正确填写密码！';
+                            }
+                            break;
+                        case 'repassword':
+                            if(_data.password != _data.repassword){
+                                error = '密码不一致！';
+                            }
+                            break;
+                        case 'nickname':
+                            if (_data.nickname.length < 1 || _data.nickname.length > 6){
+                                error = '请正确填写昵称！';
+                            }
+                            break;
+                        case 'email':
+                            if(_data.email.indexOf('@') < 1){
+                                error = '请正确填写邮箱地址！';
+                            }
+                            break;
+                        case 'age':
+                            if(_data.age > 120 || _data.age < 0){
+                                error = '请正确填写年龄！';
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    if(error)break;
+               }
+               if (error){
+                   info_alarm.css({'display':'block'});
+                   info_alarm_text.html(error);
+               }else {
+                   $.post(post_url,_data,function (data) {
                         if(data.status == 200){
-                            alert("注册成功！");
+                            info_alarm.css({'display':'block'});
+                            info_alarm_text.html("注册成功！");
                             $('.login_block').css('display','block');
                             $('.reg_block').css('display','none');
                         }else {
-                            alert(data.info);
+                            info_alarm.css({'display':'block'});
+                            info_alarm_text.html(data.info);
                         }
                     })
-               }else {
-                   alert("请正确填写注册信息！");
-                   return false;
+               }
+            });
+            $('.closeTip').on('click',function () {
+               $('.TipsHolder').css('display','none');
+               if(!over_flag){
+                   location.reload();
                }
             });
             $('#goreg_btn').on('click',function () {
@@ -114,7 +157,8 @@ window.onload = function(){
                         $('.login_block').css('display','none');
                         $('.logined_block').css('display','block');
                     }else {
-                        alert(data.info);
+                        info_alarm.css({'display':'block'});
+                        info_alarm_text.html(data.info);
                     }
                 })
             });
@@ -130,7 +174,8 @@ window.onload = function(){
                         l.css('line-height',x);
                         $('#canvas').css({'height':$(window).height(),'width':$(window).height()*4/3});
                     }else {
-                        alert(data.info);
+                        info_alarm.css({'display':'block'});
+                        info_alarm_text.html(data.info);
                     }
                 })
             });
@@ -139,7 +184,8 @@ window.onload = function(){
                var newPd = $("#NewPassword").val();
                var conPd = $("#ConfirmPassword").val();
                if(newPd != conPd){
-                   alert("新密码不一致！");
+                   info_alarm.css({'display':'block'});
+                   info_alarm_text.html("新密码不一致！");
                    return false
                }
                var _data = {};
@@ -147,7 +193,8 @@ window.onload = function(){
                _data.newPd = newPd;
                _data.method = "changePd";
                $.post(post_url,_data,function (data) {
-                   alert(data.info);
+                   info_alarm.css({'display':'block'});
+                   info_alarm_text.html("密码修改成功！");
                    if (data.status == 200){
                         $('.changePd').css('display','none');
                    }
@@ -197,7 +244,7 @@ window.onload = function(){
                     /*存金币*/
                     var aCoin=[];
 
-                    setInterval(function(){
+                    var game_timer = setInterval(function(){
                         /*清除画布*/
                         gd.clearRect(0,0,oC.width,oC.height);
                         /*生成鱼*/
@@ -288,30 +335,28 @@ window.onload = function(){
                                 }
                             }
                         }
-
                         /*画金币*/
                         for (var i = 0; i < aCoin.length; i++) {
                             aCoin[i].draw(gd);
                         }
-                        console.log(_score +','+ aBullet.length +','+ over_flag);
+                        console.log(_score+','+aBullet.length+','+over_flag);
                         if(_score == 0 && aBullet.length == 0 && over_flag){
                             over_flag = false;
-                            alert("游戏结束！得分："+score);
+                            clearInterval(game_timer);
+                            info_alarm.css({'display':'block'});
+                            info_alarm_text.html("游戏结束！得分为："+score);
                             var _data = {};
                             _data.score = score;
                             $.post(score_url,_data,function (data) {
-                                if(data.status == 200){
-                                    location.reload();
-                                }else {
+                                if(data.status != 200) {
                                     alert(data.info);
-                                    location.reload()
                                 }
                             })
                         }
                     },16);
                     oC.onclick = function(ev){
                         if(clickDisable || !over_flag){
-                            return 0 ;
+                            return false;
                         }
                         clickDisable = 1;
                         Ppplayer.currentTime = 0;
@@ -322,7 +367,8 @@ window.onload = function(){
                         if(_score - c.type*100 >= 0){
                             _score -= c.type*100;
                         }else if(_score >= 100){
-                            alert("金币不足！");
+                            info_alarm.css({'display':'block'});
+                            info_alarm_text.html("金币不足！");
                             return false;
                         }
                         var oEvent = ev || event;

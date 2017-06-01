@@ -25,6 +25,10 @@
     {% if logined_user %}
             <input type="hidden" class="is_logined" value="{{ logined_user }}">
     {% endif %}
+    <div class="TipsHolder">
+        <span class="closeTip">✘</span>
+        <p class="error_tips">注册成功！</p>
+    </div>
 	<div id="begin_Page">
 		<img src={% static 'img/title.png' %} alt="" class="title">
         <div class="login_block block" style="display: none;">
