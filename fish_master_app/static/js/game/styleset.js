@@ -9,5 +9,4 @@ $(function () {
     $('.changePd').css('height',$(window).height()*0.3);
     $('.rank_list').css('height',$(window).height()*0.8);
     $('.TipsHolder').css('height',$(window).height()*0.2);
-    $('.error_tips').css('line-height','180px');
 });

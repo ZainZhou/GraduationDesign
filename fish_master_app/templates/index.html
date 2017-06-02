@@ -26,8 +26,10 @@
             <input type="hidden" class="is_logined" value="{{ logined_user }}">
     {% endif %}
     <div class="TipsHolder">
-        <span class="closeTip">✘</span>
-        <p class="error_tips">注册成功！</p>
+        <div class="box">
+            <span class="closeTip">✘</span>
+            <p class="error_tips">注册成功！</p>
+        </div>
     </div>
 	<div id="begin_Page">
 		<img src={% static 'img/title.png' %} alt="" class="title">
@@ -94,16 +96,16 @@
                 {% endfor %}
             </ul>
             <div id="rank_btn" class="index_Btn">
-			    游戏榜单
+			    游 戏 榜 单
 		    </div>
 		    <div id="begin_Btn" class="index_Btn">
 			    开&nbsp;&nbsp;始&nbsp;&nbsp;游&nbsp;&nbsp;戏
 		    </div>
             <div id="changePd_btn" class="index_Btn">
-			    修改密码
+			    修 改 密 码
 		    </div>
             <div id="logout_btn" class="index_Btn">
-			    注销
+			    注 销
 		    </div>
         </div>
         <div class="reg_block block">

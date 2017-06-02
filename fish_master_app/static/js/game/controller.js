@@ -2,6 +2,7 @@
  * Created by Zain on 2017/4/28.
  */
 window.onload = function(){
+            console.log($(window).height());
             var oC = document.getElementById('canvas');
             var gd = oC.getContext('2d');
             var out = 10;
@@ -23,10 +24,10 @@ window.onload = function(){
                 $('.logined_block').css('display','block');
             }else {
                 $('.login_block').css('display','block');
-                l = $('.lineP');
-                x = l.css('height');
-                l.css('line-height',x);
-                $('#canvas').css({'height':$(window).height(),'width':$(window).height()*4/3});
+                // l = $('.lineP');
+                // x = l.css('height');
+                // l.css('line-height',x);
+                // $('#canvas').css({'height':$(window).height(),'width':$(window).height()*4/3});
             }
             //Django Ajax
             $(document).ajaxSend(function(event, xhr, settings) {
@@ -169,10 +170,6 @@ window.onload = function(){
                     if(data.status == 200){
                         $('.logined_block').css('display','none');
                         $('.login_block').css('display','block');
-                        l = $('.lineP');
-                        x = l.css('height');
-                        l.css('line-height',x);
-                        $('#canvas').css({'height':$(window).height(),'width':$(window).height()*4/3});
                     }else {
                         info_alarm.css({'display':'block'});
                         info_alarm_text.html(data.info);
@@ -194,8 +191,11 @@ window.onload = function(){
                _data.method = "changePd";
                $.post(post_url,_data,function (data) {
                    info_alarm.css({'display':'block'});
-                   info_alarm_text.html("密码修改成功！");
+                   info_alarm_text.html(data.info);
                    if (data.status == 200){
+                        $("#OldPassword").val("");
+                        $("#NewPassword").val("");
+                        $("#ConfirmPassword").val("");
                         $('.changePd').css('display','none');
                    }
                })
