@@ -95,12 +95,12 @@ def UserAction(request):
                 obj.save()
                 oH = GameHistory.objects.create(username=obj,score=0)
                 _data['status'] = 200
-                _data['info'] = '注册成功'
+                _data['info'] = '注册成功！'
                 _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
                 return HttpResponse(_data,content_type="application/json")
             except Exception as e:
                 _data['status'] = 500
-                _data['info'] = str(e)
+                _data['info'] = '该昵称已存在！'
                 _data = json.dumps(_data, ensure_ascii=False).encode('utf8')
                 return HttpResponse(_data, content_type="application/json")
     elif request.POST.get('method') == 'changePd':
